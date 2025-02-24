@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savora - login</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a id="preto" href="../../index.html">Home</a>
+            <div id="navbar_router"></div>
+        </nav>
+    </header>
+    <main>
+        <div class="title">
+            <h1>Login</h1>
+        </div>
+        <div class="container_input">
+            <input type="email" placeholder="Email" id="user_email">
+            <input type="password" placeholder="Password" id="user_password">
+            <div class="button_container" >
+                <button id="loginButton">Entrar</button >
+                <div>
+                    <p>Esqueceu a senha! <span>Clique aqui</span></p>
+                    <p>Não tem conta! <a href="singUp.html">Criar Conta</a></p>
+                </div>
+                ------------------------------------------- ou ----------------------------------------------
+                <button class="button_google">
+                    <img src="../image/google.png" alt="">
+                    <p>Entrar com google</p>
+                </button>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="../script/js/login.js"></script>
+    <script type="module" src="../router/router.js"></script>
+</body>
+</html>

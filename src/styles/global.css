@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+ul li {
+    display: inline-block;
+    margin: 10px;
+}
+nav a:hover{
+   color: var(--cor1);
+}
+nav a{
+    transition: .5s all;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}

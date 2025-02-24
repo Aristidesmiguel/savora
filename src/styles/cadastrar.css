@@ -1,0 +1,102 @@
+:root {
+    --cor1: #C49A6C;
+    --cor2: #7D1424;
+    --cor3: #F5E1C0;
+    --cor4: #2E2E2E;
+    --cor5: #204E39;
+}
+
+header {
+    padding: 10px;
+}
+
+main {
+   width: 100%;
+   height: 100vh; 
+   flex-direction: row;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+aside {
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+}
+
+aside .title {
+    margin: 1.3rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--cor2);
+    font-weight: bold;
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+aside input {
+   width: 45%;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid var(--cor4);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.192);
+    outline: none;
+    
+}
+
+aside input:focus, textarea:focus {
+    border: 2px solid var(--cor2);
+}
+
+aside button {
+    width: 100%;
+    height: 40px;
+    background-color: var(--cor2);
+    color: var(--cor3);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: .3s;    
+}
+
+aside button:hover {
+    background-color: var(--cor5);
+}
+
+aside input::placeholder, textarea::placeholder {
+    color: var(--cor1);
+}
+
+textarea{
+    width: 47%;
+    height: 200px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid var(--cor4);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.192);
+    outline: none;
+}
+
+.button p {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.button p a {
+    color: var(--cor1);
+}

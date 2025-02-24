@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savora - criar conta</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/cadastrar.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a id="preto" href="../../index.html">Home</a>
+            <div id="navbar_router"></div>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <div class="title">
+                <h1>Cadastra-se</h1>
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Nome" id="user_name">
+                <input type="email" placeholder="Email" id="user_email">
+                <input type="password" placeholder="Senha" id="user_password">
+                <input type="password" placeholder="Confirmar a senha" id="user_password_confirm">
+                <input type="text" placeholder="Nome do Restaurante" id="name_restaurant">
+                <input type="number" placeholder="Telefone" id="user_tel">
+                <textarea id="textarea" placeholder="Fala um pouco de você!"></textarea>
+            </div>
+            <div class="button">
+                <button id="cadastrar">Cadastrar</button>
+                <div>
+                    <p>Já tem uma conta! <a href="login.html">Entrar</a></p>
+                </div>
+            </div>
+        </aside>
+    </main>
+    <script type="module" src="../script/js/createUser.js"></script>
+    <script type="module" src="../router/router.js"></script>
+</body>
+
+</html>

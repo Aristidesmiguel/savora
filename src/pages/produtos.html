@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savora - cadastrar</title>
+  <link rel="stylesheet" href="../styles/produtos.css">
+  <link rel="stylesheet" href="../styles/contabilidade.css">
+  
+</head>
+
+<body>
+  <div class="sidebar" id="nav_bar_router">
+    <h2>SAVORA</h2>
+    
+</div>
+  <div class="content">
+    <h2>Cadastrar Produto</h2>
+
+    <button id="adicionarProdutoBtn" class="btn btn-adicionar">Adicionar Produto</button>
+  
+    <!-- Modal de Adicionar Produto -->
+    <div id="modalAdicionar" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close" aria-label="Fechar Modal">&times;</span>
+        <h3>Adicionar Produto</h3>
+        <div id="mensagem" class="mensagem"></div>
+  
+        <label for="nomeProduto">Nome do Produto:</label>
+        <input type="text" id="nomeProduto" placeholder="Nome do Produto" required>
+  
+        <label for="quantidadeProduto">Quantidade:</label>
+        <input type="number" id="quantidadeProduto" placeholder="Quantidade" required>
+  
+        <label for="precoProduto">Preço:</label>
+        <div class="input-container">
+          <input type="number" id="precoProduto" placeholder="Preço" min="0">
+        </div>
+  
+        <label for="dataProduto">Data:</label>
+        <input type="date" id="dataProduto" class="input-data" required>
+  
+        <button id="adicionarProduto" class="btn btn-success">Adicionar</button>
+      </div>
+    </div>
+  
+    <!-- Modal de Exclusão -->
+    <div id="modalExcluir" class="modal">
+      <div class="modal-content">
+        <span id="closeModalExcluir" class="close" aria-label="Fechar Modal">&times;</span>
+        <h3>Tem certeza que deseja excluir este produto?</h3>
+        <button id="confirmarExcluir" class="btn btn-danger">Confirmar</button>
+        <button id="cancelarExcluir" class="btn btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  
+    <!-- Tabela de Produtos -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome do Produto</th>
+          <th>Quantidade</th>
+          <th>Preço</th>
+          <th>Data</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="estoqueLista"></tbody>
+    </table>
+  </div>
+  <script type="module" src="../script/js/cadastrarprodutos.js"></script>
+  <script type="module" src="../router/router_user.js"></script>
+</body>
+</html>

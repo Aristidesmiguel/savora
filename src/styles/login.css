@@ -1,0 +1,98 @@
+:root {
+    --cor1: #C49A6C;
+    --cor2: #7D1424;
+    --cor3: #F5E1C0;
+    --cor4: #2E2E2E;
+    --cor5: #204E39;
+}
+
+header {
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    gap: 2rem;
+}
+
+.card_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.container_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    width: 500px;
+}
+
+
+ input {
+    padding: 10px;
+    height: 40px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="email"], input[type="password"] {
+    background: rgba(228, 228, 228, 0.692);
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.322);
+}
+
+button{
+    padding: 10px;
+    background-color: var(--cor1);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: .5s;
+    scale: 0.99;
+    width: 100%;
+}
+
+
+
+button:hover {
+    box-shadow: 0 0 20px rgba(255, 166, 0, 0.582);
+    scale: 1.0;
+    cursor: pointer;
+}
+
+.button_container div {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.button_container div p {
+    font-size: 12px;
+}
+.button_container div p span, .button_container div p a {
+    color: var(--cor1);
+}
+
+.title {
+    color: var(--cor1);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.button_google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
