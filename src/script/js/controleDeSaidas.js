@@ -1,6 +1,4 @@
-import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import functionDataBase from "../database/bancoDeDados.js";
-import firebaseDatabase from "../database/firebase.js";
 
 const salvarSaida = document.getElementById('salvar');
 const formSaida = document.getElementById('tbody');
@@ -14,39 +12,33 @@ const uid = localStorage.getItem("userId");
 
 // Recupera os dados do localStorage ou inicializa um array vazio
 let estoque = JSON.parse(localStorage.getItem("estoque")) || [];
-const produto = functionDataBase.getProdutosInfo(uid);
-
-
+const produto = await functionDataBase.getProdutosInfo(uid);
+let userId = JSON.parse(localStorage.getItem("user"))
+;
     
 console.log(produto, uid);
-const produtoRef = doc(firebaseDatabase.db, "estoques", uid); 
-    const produtoSnap = await getDoc(produtoRef);
-    console.log(produtoSnap.data());
+
+
 async function start()  {
     const n = Number(valor.value);
-
-    
-    
-
-    produto.then(data => {
-        if (descricao.value.trim() === "" || isNaN(n) || n <= 0 || n > data.totalValorEstoque) {
+    let estoqueTotal = produto.totalValorEstoque; 
+        if (descricao.value.trim() === "" || isNaN(n) || n <= 0) {
             alert("erro!");
             return;
         }
-    
-        const item = itemObject();
+        estoqueTotal -= n;
+        produto.totalValorEstoque = estoqueTotal; 
+        const item = itemObject(n);
         estoque.push(item);
-        data.totalValorEstoque -= n;
-        console.log(data.totalValorEstoque);
+        console.log(estoqueTotal);
+        localStorage.setItem('totalEstoque', estoqueTotal)
         localStorage.setItem("estoque", JSON.stringify(estoque));
         
         addRowToTable(item);
 
         
         descricao.value = "";
-        valor.value = "";
-    })
-   
+        valor.value = "";  
 }
 
 function getData() {
@@ -67,12 +59,12 @@ function addRowToTable(item) {
     formSaida.appendChild(tr);
 }
 
-function itemObject() {
+function itemObject(n) {
     return {
-        uid: uid,
+        uid: uid === null ? userId : uid,
         id: estoque.length,
         description: descricao.value,
-        valor: Number(valor.value),
+        valor: n,
         data: new Date().toLocaleDateString(),
     };
 }

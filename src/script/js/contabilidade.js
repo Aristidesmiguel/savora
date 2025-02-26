@@ -12,19 +12,21 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log(uid);
         
         const user = JSON.parse(localStorage.getItem('user'));
+        let estoqueTotal = JSON.parse(localStorage.getItem('totalEstoque'))
         const produtosInfo = await functionDataBase.getProdutosInfo(uid); // Obtém os dados dos produtos
-
+        console.log(produtosInfo.totalValorEstoque);
+        
         const data = {
             card1: {
                 totalProdutos: produtosInfo.totalProdutos,
                 data: new Date().toLocaleDateString("pt-BR", { timeZone: "UTC" })  
             },
             card2: {
-                stockValue: produtosInfo.totalValorEstoque.toLocaleString("pt-BR", { style: "currency", currency: "AOA" }) // Formata o valor em Kz
+                stockValue: estoqueTotal ? estoqueTotal.toLocaleString("pt-BR", { style: "currency", currency: "AOA" }) : produtosInfo.totalValorEstoque.toLocaleString("pt-BR", { style: "currency", currency: "AOA" }) // Formata o valor em Kz
             },
             card3: {
                 totalSaidas: "---", // Ainda não implementado
-                totalEntradas: produtosInfo.totalValorEstoque.toLocaleString("pt-BR", { style: "currency", currency: "AOA" }) ,
+                totalEntradas: estoqueTotal ? estoqueTotal.toLocaleString("pt-BR", { style: "currency", currency: "AOA" }) : produtosInfo.totalValorEstoque.toLocaleString("pt-BR", { style: "currency", currency: "AOA" }) ,
             },
             userInfo: {
                 nome: user?.nome || "---",
@@ -89,6 +91,8 @@ singOut_button.addEventListener("click", () => {
     signOut(auth).then(() => {
         console.log('conta encerrada!');
         localStorage.removeItem('user');
+        localStorage.removeItem('estoque');
+        localStorage.removeItem('totalEstoque');
         window.location.href = "../../../../index.html";
       }).catch((error) => {
         console.log('erro ao encerrar a conta!'); 
