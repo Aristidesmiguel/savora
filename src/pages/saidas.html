@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savora - Saída</title>
+    <link rel="stylesheet" href="../styles/saidas.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    
+    
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="nav_bar_router">
+            <h2>SAVORA</h2>
+            
+        </div>
+        <main class="content">
+            <header>
+                <h1>Saída</h1>
+                <button class="btn voltar">Voltar</button>
+            </header>
+            <section class="form-section">
+                <input type="text" placeholder="Descrição da despesa" id="descricao">
+                <input type="number" placeholder="Valor" id="valor" min="0" max="100000">
+                <button class="btn salvar" id="salvar">Salvar</button>
+            </section>
+            <section class="table-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição da despesa</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="../router/router_user.js"></script>
+    <script type="module" src="../script/js/controleDeSaidas.js"></script>
+</body>
+</html>

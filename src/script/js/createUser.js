@@ -11,6 +11,8 @@ const name_restaurant = document.getElementById("name_restaurant");
 const cadastrar = document.getElementById("cadastrar");
 const textarea = document.getElementById("textarea");
 
+
+
 const auth = getAuth();
 
 // Função para verificar os campos antes do cadastro
@@ -23,6 +25,16 @@ const verificarCampos = async () => {
     const restaurant = name_restaurant.value.trim();
     const descricao = textarea.value.trim();
 
+    const dadosDoCliente = {
+        id: nome,
+        nome: email,
+        email: senha,
+        senha: user_password.value,
+        tel: tel,
+        restaurant: restaurant,
+        descricao: descricao
+    }
+    localStorage.setItem('dadoDoUsuario', JSON.stringify(dadosDoCliente))
     if (!nome || !email || !senha || !tel || !restaurant) {
         alert("Preencha todos os campos!");
         return;
@@ -42,7 +54,7 @@ const verificarCampos = async () => {
         localStorage.setItem("userId", uid);
         // Criar objeto do usuário
         const userData = userObject(uid, nome, email, tel, restaurant, descricao);
-        
+
         // Salvar no Firestore com o UID como chave
         await addUser(uid, userData);
         console.log("Usuário salvo no Firestore!");
@@ -77,9 +89,14 @@ const userObject = (id, nome, email, telefone, nome_restaurante, descricao) => {
 };
 
 const usuario_local = localStorage.getItem('user');
-console.log(usuario_local); 
+const user_local = JSON.parse(usuario_local)
 
 // Evento de clique para cadastrar usuário
 cadastrar.addEventListener("click", () => {
-    verificarCampos();
+    if (user_local) {
+        alert('já existe um usuário cadastrado neste Pc!')
+    } else {
+        verificarCampos();
+        localStorage.setItem('dadoDoUsuario', JSON.stringify(dadosDoCliente))
+    }
 });

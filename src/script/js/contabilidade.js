@@ -1,33 +1,9 @@
-import { collection, query, getDocs, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-import firebaseDatabase from "../database/firebase.js";
 import functionDataBase from "../database/bancoDeDados.js";
 
 const singOut_button = document.getElementById("singOut");
 
-
-// Função para buscar produtos e calcular total de produtos e valor total do estoque
-async function getProdutosInfo(uid) {
-    try {
-        const produtosQuery = query(collection(firebaseDatabase.db, "estoques"), where("id", "==", uid));
-        const querySnapshot = await getDocs(produtosQuery);
-
-        let totalProdutos = 0;
-        let totalValorEstoque = 0;
-
-        querySnapshot.forEach((doc) => {
-            const produto = doc.data();
-            totalProdutos += 1; // Conta a quantidade de produtos
-            totalValorEstoque += produto.preco * produto.quantidade; // Soma o valor total do estoque
-        });
-
-        return { totalProdutos, totalValorEstoque };
-    } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-        return { totalProdutos: 0, totalValorEstoque: 0 };
-    }
-}
 
 // Aguarda o carregamento do DOM
 document.addEventListener("DOMContentLoaded", async function () {
@@ -35,8 +11,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         const uid = localStorage.getItem("userId"); // Pega o uid do usuário logado
         console.log(uid);
         
-        const user = await functionDataBase.getUser(uid);
-        const produtosInfo = await getProdutosInfo(uid); // Obtém os dados dos produtos
+        const user = JSON.parse(localStorage.getItem('user'));
+        const produtosInfo = await functionDataBase.getProdutosInfo(uid); // Obtém os dados dos produtos
 
         const data = {
             card1: {
@@ -112,6 +88,7 @@ const auth = getAuth();
 singOut_button.addEventListener("click", () => {
     signOut(auth).then(() => {
         console.log('conta encerrada!');
+        localStorage.removeItem('user');
         window.location.href = "../../../../index.html";
       }).catch((error) => {
         console.log('erro ao encerrar a conta!'); 

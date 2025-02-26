@@ -6,12 +6,8 @@ const user_router = [
         push: '../../src/pages/contalibidade.html'
     },
     {
-        nome: 'Entradas',
-        push: '../../src/pages/entrada.html'
-    },
-    {
         nome: 'Saídas',
-        push: '../../src/pages/saida.html'
+        push: '../../src/pages/saidas.html'
     },
     {
         nome: 'Cadastro de Produtos',

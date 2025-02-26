@@ -5,6 +5,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    background: url('../image/fundo.jpg') center / cover no-repeat fixed;
+}
+
 a {
     text-decoration: none;
 }

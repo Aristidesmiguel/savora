@@ -1,4 +1,4 @@
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc, collection, query, getDocs, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import firebaseDatabase from "../database/firebase.js"; 
 
 const getUser = async (uid) => {
@@ -20,8 +20,30 @@ const getUser = async (uid) => {
     }
 };
 
+async function getProdutosInfo(uid) {
+    try {
+        const produtosQuery = query(collection(firebaseDatabase.db, "estoques"), where("id", "==", uid));
+        const querySnapshot = await getDocs(produtosQuery);
+
+        let totalProdutos = 0;
+        let totalValorEstoque = 0;
+
+        querySnapshot.forEach((doc) => {
+            const produto = doc.data();
+            totalProdutos += 1; // Conta a quantidade de produtos
+            totalValorEstoque += produto.preco * produto.quantidade; // Soma o valor total do estoque
+        });
+
+        return { totalProdutos, totalValorEstoque };
+    } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+        return { totalProdutos: 0, totalValorEstoque: 0,  };
+    }
+}
+
 const functionDataBase = {
     getUser,
+    getProdutosInfo
 }
 
 export default functionDataBase
