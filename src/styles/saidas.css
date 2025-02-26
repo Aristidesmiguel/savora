@@ -24,6 +24,7 @@ body {
 }
 .sidebar h2 {
     font-size: 18px;
+    text-align: center;
 }
 .sidebar nav ul {
     list-style: none;
@@ -44,10 +45,16 @@ body {
     padding: 20px;
     background: #f0f0f0;
 }
-header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    color: var(--cor2);
 }
 .btn {
     background: var(--cor1);
